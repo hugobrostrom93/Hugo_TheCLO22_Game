@@ -52,19 +52,19 @@ namespace Hugo_TheCLO22_Game
             level = 1;
             gold = 0;
             exp = 0;
-            hp = 500;
+            hp = 100;
             strength = 20;
             toughness = 20;
         }
         /// <summary>
         /// En metod som gör att spelaren levlar upp vid varje 100 exp uppnådd. När spelaren når 100 exp får den därefter - 100 exp
         /// </summary>
-        public void LevelUp() // min förbättring på metoden nedan
+        public void LevelUp() 
         {
             if (exp >= 100)
             {
                 level++;
-                exp = exp - 100;
+                exp -= 100;
                 Console.WriteLine("You leveled up, and are now level " + level + "!");
             }
         }
@@ -90,6 +90,7 @@ namespace Hugo_TheCLO22_Game
         public void GetsHit(int hit_value)
         {
             hp = hp - hit_value + toughness;
+            //hp = hp - hit_value + toughness; // antar man kan skriva: hp -= hit_value + toughness;
             toughness--;
             Console.WriteLine("The monster hits you dealing " + (hit_value - toughness) + " damage!");
             Console.WriteLine("You blocked " + toughness + " damage with your toughness!");

@@ -31,11 +31,10 @@ namespace Hugo_TheCLO22_Game
         /// <param name="hit_value">Skadan från spelaren</param>
         public void GetsHit(int hit_value)
         {
-            hp = hp - hit_value; // blir fel om jag skriver hp -= hit_value?
+            hp -= hit_value; 
 
             Console.WriteLine("You hit the monster dealing " + hit_value + " damage!");
             Console.WriteLine("*** Swooosh ***");
-            // Console.WriteLine(name + " was hit for " + hit_value + " damage! He now have " + hp + " hp left");
 
             if (hp <= 0)
             {
