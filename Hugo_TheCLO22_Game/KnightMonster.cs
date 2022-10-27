@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    internal class KnightMonster : SpecifikMonster
+    internal class KnightMonster : Monster
     {
+        /// <summary>
+        /// Konstruktor för vår knight monster
+        /// </summary>
+        public KnightMonster()
+        {
+            hp = 150;
+            exp = 90; 
+            name = "Aegon the Great Knight";
+        }
     }
 }

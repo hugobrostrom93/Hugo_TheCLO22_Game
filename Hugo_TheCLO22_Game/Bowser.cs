@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Hugo_TheCLO22_Game
 {
-    internal class MummieMonster : Monster
+    internal class Bowser : Monster
     {
         /// <summary>
-        /// Konstruktor för vårt mummie monster
+        /// Konstruktor för vår bowser monster
         /// </summary>
-        public MummieMonster()
+        public Bowser()
         {
-            hp = 80;
-            exp = 80;
-            name = "Hully the Mummie";
+            hp = 100;
+            exp = 95;
+            name = "Bowser the furious";
         }
     }
 }
