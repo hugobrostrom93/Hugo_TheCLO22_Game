@@ -109,6 +109,7 @@ namespace Area_Kalkylator
                 }
             }
 
+            // Metod för att få upp spel menyn och "starta spelet"
             void GameMenu()
             {
                 while (true)
