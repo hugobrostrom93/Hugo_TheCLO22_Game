@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    internal class KnightMonster : Monster
+    public class KnightMonster : Monster
     {
         /// <summary>
         /// Konstruktor för vår knight monster
