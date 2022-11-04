@@ -11,8 +11,8 @@ namespace Hugo_TheCLO22_Game
     {
         public static void StartGame()
         {
-            SpelMeny spelMeny = new SpelMeny();
-            SpelMeny.introText();
+            Logic spelMeny = new Logic();
+            Logic.introText();
         }        
     }
 }

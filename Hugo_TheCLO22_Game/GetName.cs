@@ -11,12 +11,12 @@ namespace Hugo_TheCLO22_Game
         public static string name = "";
         public static void EnterName()
         {
-            SpelMeny spelMeny = new SpelMeny();
+            Logic spelMeny = new Logic();
             //Player newPlayer = new Player();
             Console.Write("Please enter your name: ");
             name = Console.ReadLine();
             Console.WriteLine("");
-            spelMeny.GameMenuuu();
+            spelMeny.GameMenu();
         }   
     }
 }

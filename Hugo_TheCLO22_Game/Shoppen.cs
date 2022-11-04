@@ -10,14 +10,15 @@ namespace Hugo_TheCLO22_Game
     {        
         public static void Shopp()
         {
+            Console.Clear();
             Player player = new Player();
-            SpelMeny spelMeny = new SpelMeny();
-            //Player newPlayer = new Player();
+            Logic spelMeny = new Logic();
 
             while (true)
-            {
+            {                
+                Console.WriteLine("Welcome to the shop " + GetName.name.ToUpper() + "! What would you like to buy?");
+                Console.WriteLine("+----------- YOU HAVE " + PlayerStats.gold + " GOLD AVAILABLE ------------+");
                 Console.WriteLine("");
-                Console.WriteLine("Welcome to the shop! What would you like to buy?");
                 Console.WriteLine("1. Attack Amulet ( +5 Strength ) - 100 gold");
                 Console.WriteLine("2. Defence Amulet ( +2 Toughness ) - 100 gold");
                 Console.WriteLine("3. XP Potion ( +300 Exp ) - 400 gold");
@@ -78,7 +79,8 @@ namespace Hugo_TheCLO22_Game
                 // Öppna menyn igen
                 if (shopItem == "E")
                 {
-                    spelMeny.GameMenuuu();
+                    Console.Clear();
+                    spelMeny.GameMenu();
                 }
                 // Om man försöker köpa 1 eller 2 men inte tillräckligt med guld
                 if ((shopItem == "1" || shopItem == "2") && PlayerStats.gold <= 100)

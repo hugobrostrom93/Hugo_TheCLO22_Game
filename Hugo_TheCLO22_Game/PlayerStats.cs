@@ -12,7 +12,7 @@ namespace Hugo_TheCLO22_Game
         public static int gold = 0;
         public static int exp = 0;
         public static int hp = 100;
-        public static int strength = 225;
-        public static int toughness = 25;
+        public static int strength = 125;
+        public static int toughness = 15;
     }
 }

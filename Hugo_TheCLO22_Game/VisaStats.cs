@@ -8,9 +8,9 @@ namespace Hugo_TheCLO22_Game
 {
     internal static class VisaStats
     {
-        public static void ShowDetailss()
+        public static void ShowDetails()
         {
-            Console.WriteLine("");
+            Console.Clear();
             Console.WriteLine("**********");
             Console.WriteLine("Name: " + GetName.name);
             Console.WriteLine("Level: " + PlayerStats.level + "/10");
