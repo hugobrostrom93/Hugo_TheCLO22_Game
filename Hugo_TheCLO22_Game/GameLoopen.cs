@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    internal class GameLoopen
+    internal static class GameLoopen
     {
-        MummieMonster mummieMonster = new MummieMonster();
-        SkeletonMonster skeletonMonster = new SkeletonMonster();
-        KnightMonster knightMonster = new KnightMonster();
-        Bowser bowser = new Bowser();
-        EnterFunktion enterFunktion = new EnterFunktion();
-        SpelMeny spelMeny = new SpelMeny();
-
-        public void GameLoopie(Monster monster, Player player, int min_enemy_attack_power, int max_enemy_attack_power, int lootGold)
+        public static void GameLoopie(Monster monster, Player player, int min_enemy_attack_power, int max_enemy_attack_power, int lootGold)
         {
+            MummieMonster mummieMonster = new MummieMonster();
+            SkeletonMonster skeletonMonster = new SkeletonMonster();
+            KnightMonster knightMonster = new KnightMonster();
+            Bowser bowser = new Bowser();
+            MenynEfterStrid menynEfterStrid = new MenynEfterStrid();
+            SpelMeny spelMeny = new SpelMeny();
+
             // Metoden som gör så att menyn visas efter monster X har dött och menyn har visats X gånger 
-            spelMeny.MenyEfterStrid(mummieMonster, 0);
-            spelMeny.MenyEfterStrid(skeletonMonster, 1);
-            spelMeny.MenyEfterStrid(knightMonster, 2);
+            menynEfterStrid.MenyEfterStrid(mummieMonster, 0);
+            menynEfterStrid.MenyEfterStrid(skeletonMonster, 1);
+            menynEfterStrid.MenyEfterStrid(knightMonster, 2);
 
             // Om det är spelarens första attack mot ett monster som lever och även sista bossen lever skriver vi ut nedan för att introducera fighten
             if (player.numAttack == 0 && !bowser.IsDead && !monster.IsDead)
@@ -44,7 +44,7 @@ namespace Hugo_TheCLO22_Game
                 // skiver ut hp för spelare om spelaren överlever
                 if (!player.IsDead)
                 {
-                    Console.WriteLine(player.name + ": " + player.hp + "hp");
+                    Console.WriteLine(GetName.name + ": " + PlayerStats.hp + "hp");
                 }
 
                 // skriver ut hp för monster om monster överlever
@@ -58,11 +58,13 @@ namespace Hugo_TheCLO22_Game
                 if (monster.IsDead)
                 {
                     player.numAttack = 0;
-                    player.gold += lootGold;
-                    player.exp += monster.exp;
+                    PlayerStats.gold += lootGold;
+                    PlayerStats.exp += monster.exp;
                     Console.WriteLine("You killed the monster gaining " + monster.exp + " experience and " + lootGold + " gold");
                     player.LevelUp();
-                    Console.WriteLine("You are level " + player.level + ", and you have " + player.exp + " experience, " + player.hp + " hp and " + player.gold + " gold");
+                    Console.WriteLine("You are level " + PlayerStats.level + ", and you have " + PlayerStats.exp + " experience, " + PlayerStats.hp + " hp and " + PlayerStats.gold + " gold");
+                    Console.WriteLine("");
+                    spelMeny.GameMenuuu();
                 }
 
                 // Om spelaren dör
@@ -73,9 +75,9 @@ namespace Hugo_TheCLO22_Game
                 }
 
                 // Om spelaren blir lvl 10
-                if (player.level >= 10)
+                if (PlayerStats.level >= 10)
                 {
-                    Console.WriteLine("Congratulations! You won the game!");
+                    Console.WriteLine("Congratulations " + GetName.name + " You won the game!");
                     player.numAttack = 10; // så att den inte loopar om igen - kommer ej på hur jag förhindrar detta i metoden istället
                     break;
                 }
@@ -83,7 +85,7 @@ namespace Hugo_TheCLO22_Game
                 // Om sista bossen dör
                 if (bowser.IsDead)
                 {
-                    Console.WriteLine("Congratulations " + player.name + " you defeted all the enemies and have won the game!");
+                    Console.WriteLine("Congratulations " + GetName.name + " you defeted all the enemies and have won the game!");
                     break;
                 }
 
@@ -91,11 +93,9 @@ namespace Hugo_TheCLO22_Game
                 if (!bowser.IsDead && !player.IsDead)
                 {
                     // Fråga spelaren att fortsätta
-                    enterFunktion.EnterContinue();
+                    EnterFunktion.EnterContinue();
                 }
             }
         }
-
-
     }    
 }

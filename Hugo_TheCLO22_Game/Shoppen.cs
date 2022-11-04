@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 namespace Hugo_TheCLO22_Game
 {
     internal class Shoppen
-    {
-        public void Shopp()
+    {        
+        public static void Shopp()
         {
-            Player newPlayer = new Player();
+            Player player = new Player();
             SpelMeny spelMeny = new SpelMeny();
+            //Player newPlayer = new Player();
 
             while (true)
             {
@@ -27,50 +28,50 @@ namespace Hugo_TheCLO22_Game
                 Console.WriteLine("");
 
                 // Om vi har mer eller lika med 100 guld kan vi köpa nedan
-                if (shopItem == "1" && newPlayer.gold >= 100)
+                if (shopItem == "1" && PlayerStats.gold >= 100)
                 {
                     // Ger oss stats och - guld
                     Console.WriteLine("You bought an 'Attack Amulet' and you can feel the power!");
-                    newPlayer.strength += 5;
-                    newPlayer.gold = newPlayer.gold - 100;
-                    Console.WriteLine("You have " + newPlayer.gold + " gold");
+                    PlayerStats.strength += 5;
+                    PlayerStats.gold -= 100;
+                    Console.WriteLine("You have " + PlayerStats.gold + " gold");
                 }
                 // Om vi har mer eller lika med 100 guld kan vi köpa nedan
-                if (shopItem == "2" && newPlayer.gold >= 100)
+                if (shopItem == "2" && PlayerStats.gold >= 100)
                 {
                     // Ger oss stats och - guld
                     Console.WriteLine("You bought an 'Defence Amulet' and you can feel the power!");
-                    newPlayer.toughness += 2;
-                    newPlayer.gold -= 100;
-                    Console.WriteLine("You have " + newPlayer.gold + " gold");
+                    PlayerStats.toughness += 2;
+                    PlayerStats.gold -= 100;
+                    Console.WriteLine("You have " + PlayerStats.gold + " gold");
                 }
                 // Om vi har mer eller lika med 400 guld kan vi köpa nedan
-                if (shopItem == "3" && newPlayer.gold >= 400)
+                if (shopItem == "3" && PlayerStats.gold >= 400)
                 {
                     // Ger oss stats och - guld
                     Console.WriteLine("You bought an 'XP Potion' and you can feel the power!");
-                    newPlayer.exp += 300; // öka min xp med 300
-                    newPlayer.level += 2; // ge mig +2 levels för min LevelUp läser inte in rätt annars
-                    newPlayer.gold -= 400; // ge mig minus guld
-                    Console.WriteLine("You have " + newPlayer.gold + " gold");
-                    newPlayer.LevelUp(); // spela upp LevelUp metoden
+                    PlayerStats.exp += 300; // öka min xp med 300
+                    PlayerStats.level += 2; // ge mig +2 levels för min LevelUp läser inte in rätt annars
+                    PlayerStats.gold -= 400; // ge mig minus guld
+                    Console.WriteLine("You have " + PlayerStats.gold + " gold");
+                    player.LevelUp(); // spela upp LevelUp metoden
                     Console.WriteLine("");
-                    newPlayer.exp -= 200; // ge mig - 200 exp eftersom jag ökade mina lvls med 2
+                    PlayerStats.exp -= 200; // ge mig - 200 exp eftersom jag ökade mina lvls med 2
                     break;
                 }
                 // Om vi har mer eller lika med 250 guld kan vi köpa nedan
-                if (shopItem == "4" && newPlayer.gold >= 250)
+                if (shopItem == "4" && PlayerStats.gold >= 250)
                 {
                     // Ger oss stats och - guld
                     Console.WriteLine("You bought an 'HP Potion' and you gained 50 hp!");
-                    newPlayer.hp += 50; // öka min xp med 300
-                    newPlayer.gold -= 250;
-                    if (newPlayer.hp >= 100)
+                    PlayerStats.hp += 50; // öka min xp med 300
+                    PlayerStats.gold -= 250;
+                    if (PlayerStats.hp >= 100)
                     {
-                        newPlayer.hp = 100;
+                        PlayerStats.hp = 100;
                     }
-                    Console.WriteLine("You now have " + newPlayer.hp + "/100 hp");
-                    Console.WriteLine("You now have " + newPlayer.gold + " gold left");
+                    Console.WriteLine("You now have " + PlayerStats.hp + "/100 hp");
+                    Console.WriteLine("You now have " + PlayerStats.gold + " gold left");
                     Console.WriteLine("");
                     break;
                 }
@@ -80,17 +81,17 @@ namespace Hugo_TheCLO22_Game
                     spelMeny.GameMenuuu();
                 }
                 // Om man försöker köpa 1 eller 2 men inte tillräckligt med guld
-                if ((shopItem == "1" || shopItem == "2") && newPlayer.gold <= 100)
+                if ((shopItem == "1" || shopItem == "2") && PlayerStats.gold <= 100)
                 {
                     Console.WriteLine("You don't have enough gold");
                 }
                 // Om man försöker köpa XP Potion men inte tillräckligt med guld
-                if ((shopItem == "3") && newPlayer.gold <= 400)
+                if ((shopItem == "3") && PlayerStats.gold <= 400)
                 {
                     Console.WriteLine("You don't have enough gold");
                 }
                 // Om man försöker köpa HP Potion men inte tillräckligt med guld
-                if ((shopItem == "4") && newPlayer.gold <= 250)
+                if ((shopItem == "4") && PlayerStats.gold <= 250)
                 {
                     Console.WriteLine("You don't have enough gold");
                 }

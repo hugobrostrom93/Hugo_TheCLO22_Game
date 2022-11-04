@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    public class Player
+    internal class Player
     {
         /// <summary>
         /// Namnet på spelaren
@@ -47,25 +47,21 @@ namespace Hugo_TheCLO22_Game
         /// </summary>
         public int toughness { get; set; }
 
-        public Player()
-        {
-            level = 1;
-            gold = 0;
-            exp = 0;
-            hp = 100;
-            strength = 20;
-            toughness = 20;
-        }
+        //public Player()
+        //{
+        //    name = GetName.name;
+        //}
+
         /// <summary>
         /// En metod som gör att spelaren levlar upp vid varje 100 exp uppnådd. När spelaren når 100 exp får den därefter - 100 exp
         /// </summary>
         public void LevelUp() 
         {
-            if (exp >= 100)
+            if (PlayerStats.exp >= 100)
             {
-                level++;
-                exp -= 100;
-                Console.WriteLine("You leveled up, and are now level " + level + "!");
+                PlayerStats.level++;
+                PlayerStats.exp -= 100;
+                Console.WriteLine("You leveled up, and are now level " + PlayerStats.level + "!");
             }
         }
 
@@ -79,7 +75,7 @@ namespace Hugo_TheCLO22_Game
         {
             numAttack++;
             Random random = new Random();
-            int damage = random.Next(strength, strength * 2);
+            int damage = random.Next(PlayerStats.strength, PlayerStats.strength * 2);
             return damage;
         }
 
@@ -89,14 +85,14 @@ namespace Hugo_TheCLO22_Game
         /// <param name="hit_value">skada från monstret</param>
         public void GetsHit(int hit_value)
         {
-            hp = hp - hit_value + toughness;
+            PlayerStats.hp = PlayerStats.hp - hit_value + PlayerStats.toughness;
             //hp = hp - hit_value + toughness; // antar man kan skriva: hp -= hit_value + toughness;
-            toughness--;
-            Console.WriteLine("The monster hits you dealing " + (hit_value - toughness) + " damage!");
-            Console.WriteLine("You blocked " + toughness + " damage with your toughness!");
+            PlayerStats.toughness--;
+            Console.WriteLine("The monster hits you dealing " + (hit_value - PlayerStats.toughness - 1) + " damage!");
+            Console.WriteLine("You blocked " + PlayerStats.toughness + " damage with your toughness!");
             Console.WriteLine("*** Kapaoooww ***");
 
-            if (hp <= 0)
+            if (PlayerStats.hp <= 0)
             {
                 Die();
             }
@@ -107,7 +103,7 @@ namespace Hugo_TheCLO22_Game
         /// </summary>
         public void Die()
         {
-            Console.WriteLine(name + " has died!");
+            Console.WriteLine(GetName.name + " has died!");
             IsDead = true;
         }
     }

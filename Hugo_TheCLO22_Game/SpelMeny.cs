@@ -7,27 +7,30 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    public class SpelMeny
+    internal class SpelMeny
     {
-        Random random = new Random();
-        Player newPlayer = new Player(); // Skapa objekt av våra klasser
-        MummieMonster mummieMonster = new MummieMonster();
-        SkeletonMonster skeletonMonster = new SkeletonMonster();
-        KnightMonster knightMonster = new KnightMonster();
-        Bowser bowser = new Bowser();
-        EnterFunktion enterFunktion = new EnterFunktion();
-        GameLoopen gameLoopen = new GameLoopen();
-        VisaStats visaStats = new VisaStats();
-        Shoppen shoppen = new Shoppen();
-        Player player = new Player();
+        Player newPlayer;
+        Random random;
+        MummieMonster mummieMonster;
+        SkeletonMonster skeletonMonster;
+        KnightMonster knightMonster;
+        Bowser bowser;
 
-        public void introText()
+        public SpelMeny()
+        {
+            newPlayer = new Player();
+            random = new Random();
+            mummieMonster = new MummieMonster();
+            skeletonMonster = new SkeletonMonster();
+            knightMonster = new KnightMonster();
+            bowser = new Bowser();
+        }
+        public static void introText()
         {
             Console.WriteLine("+---------------------------+");
             Console.WriteLine("+ Welcome to The CLO22 Game +");
             Console.WriteLine("+---------------------------+");
-            Console.Write("Enter your name: ");
-            newPlayer.name = Console.ReadLine();
+            GetName.EnterName();
             Console.WriteLine("");
         }
 
@@ -54,34 +57,34 @@ namespace Hugo_TheCLO22_Game
                         if (!newPlayer.IsDead && !mummieMonster.IsDead)
                         {
                             // skapar en spel loop med mummie monster
-                            gameLoopen.GameLoopie(mummieMonster, newPlayer, 45, 5, random.Next(100, 200));
+                            GameLoopen.GameLoopie(mummieMonster, newPlayer, 50, 100, random.Next(100, 200));
                         }
                         // Om spelaren överlever mot mummie
                         if (!newPlayer.IsDead && mummieMonster.IsDead)
                         {
                             // skapar en spel loop med skelett
-                            gameLoopen.GameLoopie(skeletonMonster, newPlayer, 55, 10, random.Next(200, 300));
+                            GameLoopen.GameLoopie(skeletonMonster, newPlayer, 25, 50, random.Next(200, 300));
                             // om spelaren överlever mot skelett
                         }
                         if (!newPlayer.IsDead && skeletonMonster.IsDead)
                         {
                             // skapar en spel loop med knight
-                            gameLoopen.GameLoopie(knightMonster, newPlayer, 65, 20, random.Next(300, 400));
+                            GameLoopen.GameLoopie(knightMonster, newPlayer, 25, 30, random.Next(300, 400));
                         }
                         if (!newPlayer.IsDead && knightMonster.IsDead)
                         {
                             // skapar en spel loop med bowser
-                            gameLoopen.GameLoopie(bowser, newPlayer, 75, 20, random.Next(400, 500));
+                            GameLoopen.GameLoopie(bowser, newPlayer, 15, 55, random.Next(400, 500));
                         }
 
                     }
                     if (selection == "2")
                     {
-                        visaStats.ShowDetailss();
+                        VisaStats.ShowDetailss();
                     }
                     if (selection == "3")
                     {
-                        shoppen.Shopp();
+                        Shoppen.Shopp();
                     }
                     // Om man skriver in ngt annat än 1-4 
                     if (selection != "1" && selection != "2" && selection != "3" && selection != "4")
@@ -98,19 +101,8 @@ namespace Hugo_TheCLO22_Game
                 }
                 else // Om nummret blir 1 och vi inte möter ett monster (10% chans)
                 {
-                    enterFunktion.EnterContinue();
+                    EnterFunktion.EnterContinue();
                 }
-            }
-        }
-        public void MenyEfterStrid(Monster monster, int a)
-        {
-            int shopNum = 0;
-
-            if (player.numAttack == 0 && !bowser.IsDead && monster.IsDead && shopNum == a)
-            {
-                Console.WriteLine("awdawdd");
-                shopNum++;
-                GameMenuuu();
             }
         }
     }

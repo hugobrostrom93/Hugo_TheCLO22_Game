@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hugo_TheCLO22_Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,10 @@ namespace Hugo_TheCLO22_Game
 {
     internal class Game
     {
-        public void StartGame()
-        { 
-            SpelMeny SpelMeny = new SpelMeny(); 
+        public static void StartGame()
+        {
+            SpelMeny spelMeny = new SpelMeny();
             SpelMeny.introText();
-            SpelMeny.GameMenuuu();
         }        
     }
 }

@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Hugo_TheCLO22_Game
 {
-    public class Bowser : Monster
+    internal class Bowser : Monster
     {
         /// <summary>
         /// Konstruktor för vår bowser monster

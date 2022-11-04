@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
 {
-    internal class EnterFunktion
+    internal static class EnterFunktion
     {
-        public void EnterContinue()
+        public static void EnterContinue()
         {
             while (true)
             {
