@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Hugo_TheCLO22_Game
@@ -118,6 +119,8 @@ namespace Hugo_TheCLO22_Game
             // Om det är spelarens första attack mot ett monster som lever och även sista bossen lever skriver vi ut nedan för att introducera fighten
             if (player.numAttack == 0 && !bowser.IsDead && !monster.IsDead)
             {
+                Console.Clear();
+                MonsterBildMetod(monster);
                 Console.WriteLine("");
                 Console.WriteLine("Uh oh! A wild " + monster.name + " appeared!");
             }
@@ -181,11 +184,37 @@ namespace Hugo_TheCLO22_Game
                 }
 
                 // Om sista bossen och spelaren fortfarande lever så fortsätter vi
-                if (!bowser.IsDead && !player.IsDead)
+                if (!bowser.IsDead && !player.IsDead && !monster.IsDead)
                 {
                     // Fråga spelaren att fortsätta
                     EnterFunktion.EnterContinue();
                 }
+            }
+
+            void MonsterBildMetod(Monster monsterI)
+            {
+                if (player.numAttack == 0 && !bowser.IsDead && !monster.IsDead && monster == monsterI)
+                {
+                    Console.WriteLine("");
+                    MonsterBild(monsterI);
+                    Console.WriteLine("");
+                }
+            }
+
+            void MonsterBild(Monster monsterI)
+            {
+                // spongebob
+                if (monsterI == mummieMonster)
+                    MonsterBilder.MummieBild();
+                // skeleton
+                if (monsterI == skeletonMonster)
+                    MonsterBilder.SkeletonBild();
+                // homer
+                if (monsterI == knightMonster)
+                    MonsterBilder.HomerBild();
+                // devil
+                if (monsterI == bowser)
+                    MonsterBilder.DevilBild();
             }
         }
 
@@ -197,6 +226,5 @@ namespace Hugo_TheCLO22_Game
                 GameMenu();
             }
         }
-
     }
 }

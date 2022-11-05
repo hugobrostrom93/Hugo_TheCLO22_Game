@@ -24,7 +24,7 @@ namespace Hugo_TheCLO22_Game
         /// <summary>
         /// Spelarens health
         /// </summary>
-        public int hp { get; set; }
+        //public int hp { get; set; }
         /// <summary>
         /// Om spelaren lever 
         /// </summary>

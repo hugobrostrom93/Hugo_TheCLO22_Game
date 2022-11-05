@@ -14,6 +14,7 @@ namespace Hugo_TheCLO22_Game
             {
                 Console.WriteLine("Press Enter to continue: ");
                 string key = Console.ReadKey().Key.ToString();
+                
 
                 if (key.ToUpper() == "ENTER")
                 {

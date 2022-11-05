@@ -15,7 +15,7 @@ namespace Hugo_TheCLO22_Game
             Console.WriteLine("Name: " + GetName.name);
             Console.WriteLine("Level: " + PlayerStats.level + "/10");
             Console.WriteLine("Exp: " + PlayerStats.exp + "/100");
-            Console.WriteLine("Hp: " + PlayerStats.hp + "/500");
+            Console.WriteLine("Hp: " + PlayerStats.hp + "/100");
             Console.WriteLine("Gold: " + PlayerStats.gold + " gold");
             Console.WriteLine("Strength: " + PlayerStats.strength);
             Console.WriteLine("Toughness: " + PlayerStats.strength);
